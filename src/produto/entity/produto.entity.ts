@@ -5,7 +5,7 @@ import {
   JoinColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Categoria } from '../categoria/entity/categoria.entity';
+import { Categoria } from '../../categoria/entity/categoria.entity';
 
 @Entity({ name: 'tb_produtos' })
 export class Produto {
