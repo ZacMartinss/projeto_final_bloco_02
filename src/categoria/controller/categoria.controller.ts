@@ -6,9 +6,11 @@ import {
   Param,
   Post,
   Put,
+  HttpStatus,
+  HttpCode,
 } from '@nestjs/common';
-import { CategoriaService } from './categoria.service';
-import { Categoria } from './categoria.entity';
+import { CategoriaService } from '../service/categoria.service';
+import { Categoria } from '../entity/categoria.entity';
 
 @Controller('/categorias')
 export class CategoriaController {
@@ -33,17 +35,21 @@ export class CategoriaController {
   }
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   create(@Body() categoria: Categoria): Promise<Categoria> {
-    return this.categoriaService.save(categoria);
+  return this.categoriaService.save(categoria);
   }
 
   @Put()
+  @HttpCode(HttpStatus.OK)
   update(@Body() categoria: Categoria): Promise<Categoria> {
-    return this.categoriaService.update(categoria);
+  return this.categoriaService.update(categoria);
   }
 
   @Delete('/:id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id') id: number): Promise<void> {
-    return this.categoriaService.delete(id);
+  return this.categoriaService.delete(id);
   }
+
 }
